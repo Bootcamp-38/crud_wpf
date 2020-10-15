@@ -28,9 +28,23 @@ namespace crud_wpf
             InitializeComponent();
             //view data
             Table_Supplier.ItemsSource = myContext.Suppliers.ToList();
+            bt_delete.IsEnabled = false;
+            bt_update.IsEnabled = false;
+
         }
         private void Table_Supplier_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            object item = Table_Supplier.SelectedItem;
+            string ID = (Table_Supplier.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+            id.Text = ID;
+            string NM = (Table_Supplier.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
+            nama.Text = NM;
+            bt_delete.IsEnabled = true;
+            bt_update.IsEnabled = true;
+            //bt_input.IsEnabled = false;
+
+            
+
 
         }
 
@@ -40,6 +54,7 @@ namespace crud_wpf
             {
                 MessageBox.Show("Data kosong");
                 nama.Focus();
+                
             }
             else
             {
@@ -55,18 +70,44 @@ namespace crud_wpf
 
         private void Bt_delete_Click(object sender, RoutedEventArgs e)
         {
-            int id = (Table_Supplier.SelectedItem as Supplier).Id;
-            var del = myContext.Suppliers.Where(n => n.Id == id).Single();
-            myContext.Suppliers.Remove(del);
-            myContext.SaveChanges();
-            MessageBox.Show("Data Berhasil dihapus");
-            Table_Supplier.ItemsSource = myContext.Suppliers.ToList();
+            if (nama.Text == string.Empty || id.Text == string.Empty)
+            {
+                MessageBox.Show("data kosong");
+            }
+            else
+            {
+                int Id = (Table_Supplier.SelectedItem as Supplier).Id;
+                var del = myContext.Suppliers.Where(n => n.Id == Id).Single();
+                myContext.Suppliers.Remove(del);
+                myContext.SaveChanges();
+                MessageBox.Show("Data Berhasil dihapus");
+                Table_Supplier.ItemsSource = myContext.Suppliers.ToList();
+                id.Clear();
+                nama.Clear();
+                bt_delete.IsEnabled = false;
+            }
+            
+
         }
 
         private void Bt_update_Click(object sender, RoutedEventArgs e)
         {
-            //int id = (Table_Supplier.SelectedItem as Supplier).Id;
-            //Supplier updaate = (from n in myContext.Suppliers where n.Id==id)
+            if (nama.Text == string.Empty || id.Text == string.Empty)
+            {
+                MessageBox.Show("data kosong");
+            }
+            else
+            {
+                int Id = (Table_Supplier.SelectedItem as Supplier).Id;
+                Supplier update = (from n in myContext.Suppliers where n.Id == Id select n).Single();
+                update.Name = nama.Text;
+                myContext.SaveChanges();
+                MessageBox.Show("Data Berhasil diupdate");
+                Table_Supplier.ItemsSource = myContext.Suppliers.ToList();
+                id.Clear();
+                nama.Clear();
+                
+            }
         }
     }
 }
