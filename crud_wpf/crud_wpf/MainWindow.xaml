@@ -7,7 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="472.727" Width="800">
     <Grid>
-        
-        
+        <DataGrid x:Name="Table_Supplier" SelectionChanged="Table_Supplier_SelectionChanged" AutoGenerateColumns="False" IsReadOnly="True" HorizontalAlignment="Left" Height="123" Margin="101,55,0,0" VerticalAlignment="Top" Width="109">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="id" Binding="{Binding Id}">
+                    
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="nama" Binding="{Binding Name}">
+
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
     </Grid>
 </Window>

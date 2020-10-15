@@ -1,4 +1,5 @@
-﻿using System;
+﻿using crud_wpf.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,18 @@ namespace crud_wpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        MyContext myContext = new MyContext();
         public MainWindow()
         {
             InitializeComponent();
+            Table_Supplier.ItemsSource = myContext.Suppliers.ToList();
+        }
+
+       
+
+        private void Table_Supplier_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }
