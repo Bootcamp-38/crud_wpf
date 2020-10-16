@@ -19,11 +19,12 @@
         </DataGrid>
         <TextBox x:Name="id" HorizontalAlignment="Left" Height="23" Margin="157,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Id" HorizontalAlignment="Left" Margin="82,100,0,0" VerticalAlignment="Top" Height="23" Width="33"/>
-        <Label Content="l_Nama" HorizontalAlignment="Left" Margin="82,143,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.19,0.654"/>
+        <Label Content="Nama" HorizontalAlignment="Left" Margin="82,143,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.19,0.654"/>
         <TextBox x:Name="nama" HorizontalAlignment="Left" Height="23" Margin="157,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="bt_input" Click="Bt_input_Click" Content="Input" HorizontalAlignment="Left" Margin="157,197,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="bt_update" Content="Update" HorizontalAlignment="Left" Margin="290,197,0,0" VerticalAlignment="Top" Width="75" Click="Bt_update_Click"/>
         <Button  x:Name="bt_delete" Content="Delete" HorizontalAlignment="Left" Margin="157,245,0,0" VerticalAlignment="Top" Width="75" Click="Bt_delete_Click"/>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="28,401,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
 
     </Grid>
