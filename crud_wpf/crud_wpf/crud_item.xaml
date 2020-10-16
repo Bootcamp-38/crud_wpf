@@ -13,7 +13,11 @@
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Nama" Binding="{Binding Name}">
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Nama Supplier" Binding="{Binding tb_m_Supplier.Id}">
+                <DataGridTextColumn Header="Nama Supplier" Binding="{Binding Supplier.Name}">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Stok" Binding="{Binding Stock}">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Price" Binding="{Binding Price}">
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
@@ -21,11 +25,18 @@
         <Label Content="Id" HorizontalAlignment="Left" Margin="82,66,0,0" VerticalAlignment="Top" Height="22" Width="33"/>
         <Label Content="Nama" HorizontalAlignment="Left" Margin="82,108,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.19,0.654"/>
         <TextBox x:Name="nama" HorizontalAlignment="Left" Height="24" Margin="196,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="bt_input" Click="Bt_input_Click" Content="Input" HorizontalAlignment="Left" Margin="157,197,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="bt_update" Content="Update" HorizontalAlignment="Left" Margin="290,197,0,0" VerticalAlignment="Top" Width="75" Click="Bt_update_Click"/>
-        <Button  x:Name="bt_delete" Content="Delete" HorizontalAlignment="Left" Margin="157,245,0,0" VerticalAlignment="Top" Width="75" Click="Bt_delete_Click"/>
+        <Button x:Name="bt_input" Click="Bt_input_Click" Content="Input" HorizontalAlignment="Left" Margin="139,287,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="bt_update" Content="Update" HorizontalAlignment="Left" Margin="272,287,0,0" VerticalAlignment="Top" Width="75" Click="Bt_update_Click"/>
+        <Button  x:Name="bt_delete" Content="Delete" HorizontalAlignment="Left" Margin="139,335,0,0" VerticalAlignment="Top" Width="75" Click="Bt_delete_Click"/>
         <Label Content="Nama Supplier&#xD;&#xA;&#xD;&#xA;" HorizontalAlignment="Left" Margin="82,139,0,0" VerticalAlignment="Top" Width="96" Height="43"/>
-        <ComboBox x:Name="sp" HorizontalAlignment="Left" Margin="196,139,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="Sp_SelectionChanged"/>
+        <ComboBox x:Name="sp" ItemsSource="{Binding Supplier}" DisplayMemberPath="Name" SelectedValuePath="Id" HorizontalAlignment="Left" Margin="196,139,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="Sp_SelectionChanged"/>
+        
+        
         <Button Content="Back" HorizontalAlignment="Left" Margin="28,376,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click"/>
+        <Label Content="Stock" HorizontalAlignment="Left" Margin="82,164,0,0" VerticalAlignment="Top"/>
+        <Label Content="Price" HorizontalAlignment="Left" Margin="82,195,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tb_stock" HorizontalAlignment="Left" Height="23" Margin="196,168,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox  x:Name="tb_price" HorizontalAlignment="Left" Height="23" Margin="196,197,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Button Content="Clear" HorizontalAlignment="Left" Margin="272,335,0,0" VerticalAlignment="Top" Width="76" Click="Button_Click_1"/>
     </Grid>
 </Window>

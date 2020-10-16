@@ -9,5 +9,6 @@
     <Grid>
         <Button Content="CRUD Supplier" HorizontalAlignment="Left" Margin="354,144,0,0" VerticalAlignment="Top" Width="91" Click="Button_Click"/>
         <Button Content="CRUD Item" HorizontalAlignment="Left" Margin="354,224,0,0" VerticalAlignment="Top" Width="89" Click="Button_Click_1"/>
+        <Label Content="Menu" HorizontalAlignment="Left" Margin="379,70,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

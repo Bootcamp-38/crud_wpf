@@ -70,6 +70,8 @@ namespace crud_wpf
                 myContext.SaveChanges();
                 MessageBox.Show("Data Berhasil masuk");
                 Table_Supplier.ItemsSource = myContext.Suppliers.ToList();
+                id.Text = "";
+                nama.Text = "";
             }
             
 
@@ -122,6 +124,15 @@ namespace crud_wpf
             menu pndh = new menu();
             pndh.Show();
             this.Hide();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            id.Text = "";
+            nama.Text = "";
+            bt_input.IsEnabled = true;
+            bt_delete.IsEnabled = false;
+            bt_update.IsEnabled = false;
         }
     }
 }
