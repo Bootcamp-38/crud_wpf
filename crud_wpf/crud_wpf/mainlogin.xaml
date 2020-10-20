@@ -31,7 +31,7 @@
             </StackPanel>
         </Grid>
         <Button Width="150" x:Name="bt_login" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,65" Content="LOGIN" Click="Button_Click"/>
-        <TextBlock Text="ESQUECEU A SENHA?" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="30" Foreground="Gray" Cursor="Hand"/>
+        <TextBlock Text="Belum Ada Akun?" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="30" Foreground="Gray" Cursor="Hand"/>
         <TextBlock Height="23" HorizontalAlignment="Left" x:Name ="errormessage" VerticalAlignment="Top" Width="246" Margin="114,235,-18,0"  OpacityMask="Crimson" Foreground="#FFE5572C"  />
         <Image Source="Assets/user.jpg" Width="100" Height="100" VerticalAlignment="Top" Margin="30"/>
     </Grid>

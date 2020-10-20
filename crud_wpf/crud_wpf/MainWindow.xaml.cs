@@ -30,8 +30,8 @@ namespace crud_wpf
             InitializeComponent();
             //view data
             Table_Supplier.ItemsSource = myContext.Suppliers.ToList();
-            bt_delete.IsEnabled = false;
-            bt_update.IsEnabled = false;
+            //bt_delete.IsEnabled = false;
+            //bt_update.IsEnabled = false;
             id.IsEnabled = false;
             //menu
             
@@ -46,7 +46,7 @@ namespace crud_wpf
                 id.Text = ID;
                 string NM = (Table_Supplier.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
                 nama.Text = NM;
-                bt_delete.IsEnabled = true;
+                //bt_delete.IsEnabled = true;
                 bt_update.IsEnabled = true;
                 bt_input.IsEnabled = false;
             }
@@ -83,11 +83,8 @@ namespace crud_wpf
 
         private void Bt_delete_Click(object sender, RoutedEventArgs e)
         {
-            if (nama.Text == string.Empty || id.Text == string.Empty)
-            {
-                MessageBox.Show("data kosong");
-            }
-            else
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("hapus data ini?", "Konfirmasi Hapus", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
             {
                 int Id = (Table_Supplier.SelectedItem as Supplier).Id;
                 var del = myContext.Suppliers.Where(n => n.Id == Id).Single();
@@ -97,7 +94,11 @@ namespace crud_wpf
                 Table_Supplier.ItemsSource = myContext.Suppliers.ToList();
                 id.Clear();
                 nama.Clear();
-                bt_delete.IsEnabled = false;
+                //bt_delete.IsEnabled = false;
+            }
+            else
+            {
+                
             }
             
 
@@ -135,7 +136,7 @@ namespace crud_wpf
             id.Text = "";
             nama.Text = "";
             bt_input.IsEnabled = true;
-            bt_delete.IsEnabled = false;
+            //bt_delete.IsEnabled = false;
             bt_update.IsEnabled = false;
         }
 

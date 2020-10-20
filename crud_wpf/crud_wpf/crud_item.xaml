@@ -5,18 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:crud_wpf"
         mc:Ignorable="d"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="crud_item" Width="979" WindowStartupLocation="CenterScreen" WindowState="Maximized" Height="533.5">
-    <Grid Margin="0,0,2,0">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" Height="565.5" Width="1044.5">
+
+    <Grid HorizontalAlignment="Left" Width="1034" Margin="0,0,0,1">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" MinHeight="425"/>
+            <RowDefinition Height="auto" MinHeight="471"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="290"/>
+            <ColumnDefinition Width="154"/>
+            <ColumnDefinition Width="0"/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <materialDesign:ColorZone Mode="PrimaryMid" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Height="46">
+        <materialDesign:ColorZone Mode="PrimaryMid" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Height="46">
             <Grid>
                 <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Right" Margin="10"/>
             </Grid>
@@ -45,61 +49,65 @@
                 <StackPanel x:Name="Menu" Margin="10"/>
             </ScrollViewer>
         </Grid>
-        <TextBox x:Name="id" HorizontalAlignment="Left" Height="22" Margin="134,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-        <Label Content="Id" HorizontalAlignment="Left" Margin="20,99,0,0" VerticalAlignment="Top" Height="22" Width="33" Grid.Column="1"/>
-        <Label Content="Nama" HorizontalAlignment="Left" Margin="20,141,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.19,0.654" Grid.Column="1" Height="24" Width="40"/>
-        <TextBox x:Name="nama" PreviewTextInput="nama_PreviewTextInput" HorizontalAlignment="Left" Height="24" Margin="134,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-        <Grid Margin="269,46,0,0" Grid.Column="1" Grid.RowSpan="2">
-            <DataGrid x:Name="Table_Item" SelectionChanged="Table_Item_SelectionChanged" AutoGenerateColumns="False" IsReadOnly="True" HorizontalAlignment="Left" Height="218" Margin="10,24,0,0" VerticalAlignment="Top" Width="394">
+        <TextBox x:Name="id" HorizontalAlignment="Left" Height="22" Margin="134,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" Grid.Column="2"/>
+        <Label Content="Id" HorizontalAlignment="Left" Margin="20,99,0,0" VerticalAlignment="Top" Height="22" Width="33" Grid.Column="2"/>
+        <Label Content="Nama" HorizontalAlignment="Left" Margin="20,141,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.19,0.654" Grid.Column="2" Height="24" Width="40"/>
+        <TextBox x:Name="nama" PreviewTextInput="nama_PreviewTextInput" HorizontalAlignment="Left" Height="24" Margin="134,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" Grid.Column="2"/>
+        <Grid/>
+        <Label Content="Nama Supplier&#xD;&#xA;&#xD;&#xA;" HorizontalAlignment="Left" Margin="20,172,0,0" VerticalAlignment="Top" Width="96" Height="43" Grid.Column="2"/>
+        <ComboBox x:Name="sp" ItemsSource="{Binding Supplier}" DisplayMemberPath="Name" SelectedValuePath="Id" HorizontalAlignment="Left" Margin="134,172,0,0" VerticalAlignment="Top" Width="183" SelectionChanged="Sp_SelectionChanged" Grid.Column="2" Height="28"/>
+        <Label Content="Stock" HorizontalAlignment="Left" Margin="20,197,0,0" VerticalAlignment="Top" Grid.Column="2" Height="24" Width="37"/>
+        <Label Content="Price" HorizontalAlignment="Left" Margin="20,228,0,0" VerticalAlignment="Top" Grid.Column="2" Height="24" Width="34"/>
+        <TextBox x:Name="tb_stock" PreviewTextInput="tb_stock_PreviewTextInput" HorizontalAlignment="Left" Height="23" Margin="134,201,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="183" Grid.Column="2"/>
+        <TextBox  x:Name="tb_price" PreviewTextInput="tb_price_PreviewTextInput" HorizontalAlignment="Left" Height="23" Margin="134,230,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="183" Grid.Column="2"/>
+        <StackPanel Grid.Column="2" HorizontalAlignment="Left" Height="379" Margin="358,75,0,0" VerticalAlignment="Top" Width="512">
+            <DataGrid x:Name="Table_Item" SelectionChanged="Table_Item_SelectionChanged" AutoGenerateColumns="False" IsReadOnly="True" Height="246" VerticalAlignment="Top" HorizontalAlignment="Right" Width="512">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id" Binding="{Binding Id}">
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Nama" Binding="{Binding Name}">
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Nama Supplier" Binding="{Binding Supplier.Name}">
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Stok" Binding="{Binding Stock}">
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Price" Binding="{Binding Price}">
-                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Nama" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Nama Supplier" Binding="{Binding Supplier.Name}"/>
+                    <DataGridTextColumn Header="Stok" Binding="{Binding Stock}"/>
+                    <DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
+                    <DataGridTemplateColumn Header="">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="bt_delete" Content="{materialDesign:PackIcon delete}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Bt_delete_Click">
+                                    <ToolTipService.ToolTip >
+                                        <ToolTip Content="Delete"     
+                                        HorizontalOffset="10" VerticalOffset="20"/>
+                                    </ToolTipService.ToolTip>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="bt_input" Click="Bt_input_Click" Content="{materialDesign:PackIcon done}" HorizontalAlignment="Left" Margin="118,276,0,0"  Width="75" VerticalAlignment="Top">
-                <ToolTipService.ToolTip >
-                    <ToolTip Content="Save"     
+            <Grid HorizontalAlignment="Center" Height="100" Width="140">
+                <Button x:Name="bt_input" Click="Bt_input_Click" Content="{materialDesign:PackIcon done}" HorizontalAlignment="Left" Height="Auto" Margin="82,10,0,58">
+                    <ToolTipService.ToolTip >
+                        <ToolTip Content="Save"     
                     HorizontalOffset="10" VerticalOffset="20"/>
-                </ToolTipService.ToolTip>
-            </Button>
-            <Button x:Name="bt_update" Content="{materialDesign:PackIcon Update}" HorizontalAlignment="Left" Margin="254,276,0,0" VerticalAlignment="Top" Width="76" Click="Bt_update_Click" RenderTransformOrigin="0.5,-0.562">
-                <ToolTipService.ToolTip >
-                    <ToolTip Content="Update"     
+                    </ToolTipService.ToolTip>
+                </Button>
+                <Button Content="{materialDesign:PackIcon ArrowLeft}" Click="Button_Click" RenderTransformOrigin="-1.149,0.531" HorizontalAlignment="Left" Height="Auto" Margin="10,56,0,12">
+                    <ToolTipService.ToolTip >
+                        <ToolTip Content="Back"     
                     HorizontalOffset="10" VerticalOffset="20"/>
-                </ToolTipService.ToolTip>
-            </Button>
-            <Button x:Name="bt_delete" Content="{materialDesign:PackIcon delete}" Margin="118,331,0,0" VerticalAlignment="Top" Click="Bt_delete_Click" HorizontalAlignment="Left" Width="75">
-                <ToolTipService.ToolTip >
-                    <ToolTip Content="Delete"     
+                    </ToolTipService.ToolTip>
+                </Button>
+                <Button Content="{materialDesign:PackIcon Autorenew}" Height="Auto" Click="Button_Click_1" RenderTransformOrigin="-1.347,0.47" HorizontalAlignment="Right" Margin="0,56,10,10">
+                    <ToolTipService.ToolTip >
+                        <ToolTip Content="Clear"     
                     HorizontalOffset="10" VerticalOffset="20"/>
-                </ToolTipService.ToolTip>
-            </Button>
-            <Button Content="{materialDesign:PackIcon Autorenew}" Height="33" Margin="254,331,0,0" VerticalAlignment="Top" Click="Button_Click_1" HorizontalAlignment="Left" Width="72">
-                <ToolTipService.ToolTip >
-                    <ToolTip Content="Clear"     
+                    </ToolTipService.ToolTip>
+                </Button>
+                <Button x:Name="bt_update" Content="{materialDesign:PackIcon Update}" Click="Bt_update_Click" RenderTransformOrigin="0.5,-0.562" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,82,0">
+                    <ToolTipService.ToolTip >
+                        <ToolTip Content="Update"     
                     HorizontalOffset="10" VerticalOffset="20"/>
-                </ToolTipService.ToolTip>
-            </Button>
-        </Grid>
-        <Label Content="Nama Supplier&#xD;&#xA;&#xD;&#xA;" HorizontalAlignment="Left" Margin="20,172,0,0" VerticalAlignment="Top" Width="96" Height="43" Grid.Column="1"/>
-        <ComboBox x:Name="sp" ItemsSource="{Binding Supplier}" DisplayMemberPath="Name" SelectedValuePath="Id" HorizontalAlignment="Left" Margin="134,172,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="Sp_SelectionChanged" Grid.Column="1" Height="28"/>
-        <Button Content="{materialDesign:PackIcon ArrowLeft}" HorizontalAlignment="Left" Margin="25,29,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click" Grid.Column="1" Grid.Row="1">
-            <ToolTipService.ToolTip >
-                <ToolTip Content="Back"     
-                    HorizontalOffset="10" VerticalOffset="20"/>
-            </ToolTipService.ToolTip>
-        </Button>
-        <Label Content="Stock" HorizontalAlignment="Left" Margin="20,197,0,0" VerticalAlignment="Top" Grid.Column="1" Height="24" Width="37"/>
-        <Label Content="Price" HorizontalAlignment="Left" Margin="20,228,0,0" VerticalAlignment="Top" Grid.Column="1" Height="24" Width="34"/>
-        <TextBox x:Name="tb_stock" PreviewTextInput="tb_stock_PreviewTextInput" HorizontalAlignment="Left" Height="23" Margin="134,201,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-        <TextBox  x:Name="tb_price" PreviewTextInput="tb_price_PreviewTextInput" HorizontalAlignment="Left" Height="23" Margin="134,230,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    </ToolTipService.ToolTip>
+                </Button>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Window>

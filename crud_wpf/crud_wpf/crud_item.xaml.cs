@@ -34,57 +34,74 @@ namespace crud_wpf
             var com = myContext.Suppliers.ToList();
             sp.ItemsSource = com;
             id.IsEnabled = false;
-            bt_delete.IsEnabled = false;
-            bt_update.IsEnabled = false;
+            //bt_delete.IsEnabled = false;
+            //bt_update.IsEnabled = false;
         }
 
         private void Table_Item_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            object item = Table_Item.SelectedItem;
-            if (item != null)
+            try
             {
-                string ID = (Table_Item.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
-                id.Text = ID;
-                string NM = (Table_Item.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
-                nama.Text = NM;
-                string NM_S = (Table_Item.SelectedCells[2].Column.GetCellContent(item) as TextBlock).Text;
-                sp.Text = NM_S;
-                string STOCK = (Table_Item.SelectedCells[3].Column.GetCellContent(item) as TextBlock).Text;
-                tb_stock.Text = STOCK;
-                string PRICE = (Table_Item.SelectedCells[4].Column.GetCellContent(item) as TextBlock).Text;
-                tb_price.Text = PRICE;
-                bt_delete.IsEnabled = true;
-                bt_update.IsEnabled = true;
-                bt_input.IsEnabled = false;
+                
+                object item = Table_Item.SelectedItem;
+                if (item != null)
+                {
+                    string ID = (Table_Item.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                    id.Text = ID;
+                    string NM = (Table_Item.SelectedCells[1].Column.GetCellContent(item) as TextBlock).Text;
+                    nama.Text = NM;
+                    string NM_S = (Table_Item.SelectedCells[2].Column.GetCellContent(item) as TextBlock).Text;
+                    sp.Text = NM_S;
+                    string STOCK = (Table_Item.SelectedCells[3].Column.GetCellContent(item) as TextBlock).Text;
+                    tb_stock.Text = STOCK;
+                    string PRICE = (Table_Item.SelectedCells[4].Column.GetCellContent(item) as TextBlock).Text;
+                    tb_price.Text = PRICE;
+                    //bt_delete.IsEnabled = true;
+                    bt_update.IsEnabled = true;
+                    bt_input.IsEnabled = false;
+                }
             }
+            catch (Exception ex)
+            {
+                ex.Message.ToString();
+            }
+
 
         }
 
         private void Bt_input_Click(object sender, RoutedEventArgs e)
         {
-            if (nama.Text == string.Empty)
+            try
             {
-                MessageBox.Show("Data kosong");
-                nama.Focus();
+                if (nama.Text == string.Empty)
+                {
+                    MessageBox.Show("Data kosong");
+                    nama.Focus();
 
+                }
+                else
+                {
+                    int Stock = Convert.ToInt32(tb_stock.Text);
+                    int Price = Convert.ToInt32(tb_price.Text);
+                    var sup = myContext.Suppliers.Where(s => s.Id == cb).FirstOrDefault();
+                    var input = new Item(nama.Text, sup, Stock, Price);
+
+                    myContext.Items.Add(input);
+                    myContext.SaveChanges();
+                    MessageBox.Show("Data Berhasil masuk");
+                    Table_Item.ItemsSource = myContext.Items.ToList();
+                    id.Text = "";
+                    nama.Text = "";
+                    sp.Text = "";
+                    tb_price.Text = "";
+                    tb_stock.Text = "";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                int Stock = Convert.ToInt32(tb_stock.Text);
-                int Price = Convert.ToInt32(tb_price.Text);
-                var sup = myContext.Suppliers.Where(s => s.Id == cb).FirstOrDefault();
-                var input = new Item(nama.Text, sup, Stock,Price);
-                
-                myContext.Items.Add(input);
-                myContext.SaveChanges();
-                MessageBox.Show("Data Berhasil masuk");
-                Table_Item.ItemsSource = myContext.Items.ToList();
-                id.Text = "";
-                nama.Text = "";
-                sp.Text = "";
-                tb_price.Text = "";
-                tb_stock.Text = "";
+                ex.Message.ToString();
             }
+            
         }
 
         private void Bt_update_Click(object sender, RoutedEventArgs e)
@@ -119,11 +136,8 @@ namespace crud_wpf
 
         private void Bt_delete_Click(object sender, RoutedEventArgs e)
         {
-            if (nama.Text == string.Empty || id.Text == string.Empty)
-            {
-                MessageBox.Show("data kosong");
-            }
-            else
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("hapus data ini?", "Konfirmasi Hapus", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
             {
                 int Id = (Table_Item.SelectedItem as Item).Id;
                 var del = myContext.Items.Where(n => n.Id == Id).Single();
@@ -133,12 +147,16 @@ namespace crud_wpf
                 Table_Item.ItemsSource = myContext.Items.ToList();
                 id.Clear();
                 nama.Clear();
-                bt_delete.IsEnabled = false;
+                //bt_delete.IsEnabled = false;
                 id.Text = "";
                 nama.Text = "";
                 sp.Text = "";
                 tb_price.Text = "";
                 tb_stock.Text = "";
+            }
+            else
+            {
+               
             }
         }
 
@@ -153,13 +171,13 @@ namespace crud_wpf
         {
             try
             {
-               cb = Convert.ToInt32(sp.SelectedValue.ToString());
+            cb = Convert.ToInt32(sp.SelectedValue.ToString());
             }
             catch(Exception ex)
             {
                 ex.Message.ToString();
             }
-           
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -170,7 +188,7 @@ namespace crud_wpf
             tb_price.Text = "";
             tb_stock.Text = "";
             bt_input.IsEnabled = true;
-            bt_delete.IsEnabled = false;
+            //bt_delete.IsEnabled = false;
             bt_update.IsEnabled = false;
 
         }
