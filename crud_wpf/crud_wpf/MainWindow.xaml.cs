@@ -2,8 +2,10 @@
 using crud_wpf.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,8 +33,10 @@ namespace crud_wpf
             bt_delete.IsEnabled = false;
             bt_update.IsEnabled = false;
             id.IsEnabled = false;
-
+            //menu
+            
         }
+
         private void Table_Supplier_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             object item = Table_Supplier.SelectedItem;
@@ -121,9 +125,9 @@ namespace crud_wpf
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            menu pndh = new menu();
-            pndh.Show();
-            this.Hide();
+            //menu pndh = new menu();
+            //pndh.Show();
+            //this.Hide();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -133,6 +137,26 @@ namespace crud_wpf
             bt_input.IsEnabled = true;
             bt_delete.IsEnabled = false;
             bt_update.IsEnabled = false;
+        }
+
+        private void nama_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^a-zA-Z]+$");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow pndh = new MainWindow();
+            pndh.Show();
+            this.Hide();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            crud_item pndh = new crud_item();
+            pndh.Show();
+            this.Hide();
         }
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -143,9 +144,9 @@ namespace crud_wpf
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            menu pndh = new menu();
-            pndh.Show();
-            this.Hide();
+            //menu pndh = new menu();
+            //pndh.Show();
+            //this.Hide();
         }
 
         private void Sp_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -172,6 +173,38 @@ namespace crud_wpf
             bt_delete.IsEnabled = false;
             bt_update.IsEnabled = false;
 
+        }
+
+        private void nama_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^a-zA-Z]+$");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void tb_stock_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+$");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void tb_price_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+$");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow pndh = new MainWindow();
+            pndh.Show();
+            this.Hide();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            crud_item pndh = new crud_item();
+            pndh.Show();
+            this.Hide();
         }
     }
 }
