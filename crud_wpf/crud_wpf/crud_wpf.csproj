@@ -74,6 +74,9 @@
     <Compile Include="crud_transaction.xaml.cs">
       <DependentUpon>crud_transaction.xaml</DependentUpon>
     </Compile>
+    <Compile Include="crud_transactionitem.xaml.cs">
+      <DependentUpon>crud_transactionitem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202010210745126_addtransactiondantrans_item.cs" />
     <Compile Include="Migrations\202010210745126_addtransactiondantrans_item.designer.cs">
       <DependentUpon>202010210745126_addtransactiondantrans_item.cs</DependentUpon>
@@ -91,6 +94,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="crud_transaction.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="crud_transactionitem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
