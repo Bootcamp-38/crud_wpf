@@ -140,9 +140,9 @@ namespace crud_wpf
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //menu pndh = new menu();
-            //pndh.Show();
-            //this.Hide();
+            mainlogin pndh = new mainlogin();
+            pndh.Show();
+            this.Hide();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

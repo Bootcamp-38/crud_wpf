@@ -91,7 +91,7 @@
             </Button>
             <Button Content="{materialDesign:PackIcon ArrowLeft}" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Width="56" Click="Button_Click">
                 <ToolTipService.ToolTip >
-                    <ToolTip Content="Back"     
+                    <ToolTip Content="Logout"     
                     HorizontalOffset="10" VerticalOffset="20"/>
                 </ToolTipService.ToolTip>
             </Button>

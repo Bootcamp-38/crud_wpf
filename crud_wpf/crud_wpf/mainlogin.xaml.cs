@@ -3,6 +3,7 @@ using crud_wpf.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -82,6 +83,52 @@ namespace crud_wpf
             //crud_item pndh = new crud_item();
             //pndh.Show();
             //this.Hide();
+        }
+
+        private void Button_ForgotPass_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(tb_email.Text))
+            {
+                MessageBox.Show("Email kosong", "Warning!", MessageBoxButton.OK);
+            }
+            else
+            {
+                if (!myContext.Logins.Any(x => x.Email == tb_email.Text))
+                {
+                    MessageBox.Show("Email anda tidak terdaftar", "Caution!", MessageBoxButton.OK);
+                    tb_email.Clear();
+                    tb_email.Focus();
+                }
+                else
+                {
+                    Guid id = Guid.NewGuid();
+                    string guid = id.ToString();
+                    Login updateAdmins = (from m in myContext.Logins
+                                          where m.Email == tb_email.Text
+                                          select m).FirstOrDefault();
+                    updateAdmins.Password = guid;
+                    myContext.SaveChanges();
+
+                    string PasswordText = "Password Has Been Changed To " + guid;
+
+                    SmtpClient client = new SmtpClient();
+                    client.Port = 587;
+                    client.Host = "smtp.gmail.com";
+                    client.EnableSsl = true;
+                    client.Timeout = 10000;
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    client.UseDefaultCredentials = false;
+                    client.Credentials = new System.Net.NetworkCredential("agungaliakbar5@gmail.com", "twincell");
+                    MailMessage mm = new MailMessage("tampan@gmail.com", tb_email.Text, "Secret!", PasswordText);
+                    mm.Subject = "Lupa Password";
+                    mm.BodyEncoding = UTF8Encoding.UTF8;
+                    mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+                    client.Send(mm);
+                    MessageBox.Show("Password Changed, please check your email", "Succesfully", MessageBoxButton.OK);
+                    tb_email.Clear();
+                    tb_pass.Focus();
+                }
+            }
         }
     }
 }
