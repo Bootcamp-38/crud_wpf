@@ -88,13 +88,27 @@ namespace crud_wpf
             {
                 int Id = (Table_Supplier.SelectedItem as Supplier).Id;
                 var del = myContext.Suppliers.Where(n => n.Id == Id).Single();
-                myContext.Suppliers.Remove(del);
-                myContext.SaveChanges();
-                MessageBox.Show("Data Berhasil dihapus");
-                Table_Supplier.ItemsSource = myContext.Suppliers.ToList();
-                id.Clear();
-                nama.Clear();
-                //bt_delete.IsEnabled = false;
+                try
+                {
+                    
+                    myContext.Suppliers.Remove(del);
+                    //myContext.Entry(del).Reload();
+                    myContext.SaveChanges();
+                    MessageBox.Show("Data Berhasil dihapus");
+                    Table_Supplier.ItemsSource = myContext.Suppliers.ToList();
+                    id.Clear();
+                    nama.Clear();
+                    //bt_delete.IsEnabled = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Data tidak bisa dihapus sedang digunakan di Table Item");
+                    myContext.Entry(del).Reload();
+                    id.Clear();
+                    nama.Clear();
+                    
+                }
+                
             }
             else
             {
