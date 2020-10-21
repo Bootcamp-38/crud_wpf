@@ -109,7 +109,7 @@ namespace crud_wpf
                     updateAdmins.Password = guid;
                     myContext.SaveChanges();
 
-                    string PasswordText = "Password Has Been Changed To " + guid;
+                    string PasswordText = "Masukkan karakter pengganti Password " + guid;
 
                     SmtpClient client = new SmtpClient();
                     client.Port = 587;
@@ -127,6 +127,9 @@ namespace crud_wpf
                     MessageBox.Show("Password Changed, please check your email", "Succesfully", MessageBoxButton.OK);
                     tb_email.Clear();
                     tb_pass.Focus();
+                    Reset_pass pndh = new Reset_pass();
+                    pndh.Show();
+                    this.Hide();
                 }
             }
         }

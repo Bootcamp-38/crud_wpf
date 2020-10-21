@@ -71,10 +71,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="crud_transaction.xaml.cs">
+      <DependentUpon>crud_transaction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010210745126_addtransactiondantrans_item.cs" />
+    <Compile Include="Migrations\202010210745126_addtransactiondantrans_item.designer.cs">
+      <DependentUpon>202010210745126_addtransactiondantrans_item.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Transaction.cs" />
+    <Compile Include="Models\TransactionItem.cs" />
     <Compile Include="Reset_pass.xaml.cs">
       <DependentUpon>Reset_pass.xaml</DependentUpon>
     </Compile>
+    <Compile Include="reset_token.xaml.cs">
+      <DependentUpon>reset_token.xaml</DependentUpon>
+    </Compile>
     <Page Include="crud_item.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="crud_transaction.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -102,6 +118,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Reset_pass.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="reset_token.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -151,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010200150068_addmodelslogin.resx">
       <DependentUpon>202010200150068_addmodelslogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010210745126_addtransactiondantrans_item.resx">
+      <DependentUpon>202010210745126_addtransactiondantrans_item.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

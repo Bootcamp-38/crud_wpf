@@ -1,11 +1,11 @@
-﻿<Window x:Class="crud_wpf.MainWindow"
+﻿<Window x:Class="crud_wpf.crud_transaction"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:crud_wpf"
         mc:Ignorable="d"
-        Title="Supplier"
+        Title="Transaction"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" Height="655.5" Width="1116.5">
     <Grid Margin="0,0,2,2">
         <Grid.RowDefinitions>
@@ -32,11 +32,10 @@
             </Grid>
             <DockPanel>
                 <Menu DockPanel.Dock="Top">
-                    <MenuItem Header="Menu">
+                    <MenuItem Header="Menu" Click="MenuItem_Click">
                         <MenuItem Header="Supplier" Click="MenuItem_Click" />
                         <MenuItem Header="Item" Click="MenuItem_Click_1" />
                         <MenuItem Header="Transaction" Click="MenuItem_Click_2" />
-                        <MenuItem Header="Transaction Item" Click="MenuItem_Click_3" />
                         <!--<MenuItem Header="_Save" />
                         <Separator />
                         <MenuItem Header="_Exit" />-->
@@ -44,11 +43,11 @@
                 </Menu>
                 <TextBox AcceptsReturn="True" />
             </DockPanel>
-            <DataGrid x:Name="Table_Supplier" SelectionChanged="Table_Supplier_SelectionChanged" AutoGenerateColumns="False" IsReadOnly="True" HorizontalAlignment="Left" Height="262" Margin="680,7,-737,-268" VerticalAlignment="Top" Width="307" Grid.Row="1">
+            <DataGrid x:Name="Table_Transaction" SelectionChanged="Table_Transacton_SelectionChanged" AutoGenerateColumns="False" IsReadOnly="True" HorizontalAlignment="Left" Height="262" Margin="680,7,-837,-268" VerticalAlignment="Top" Width="407" Grid.Row="1">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="id" Binding="{Binding Id}">
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="nama" Binding="{Binding Name}">
+                    <DataGridTextColumn Header="Order Date" Binding="{Binding OrderDate}">
 
                     </DataGridTextColumn>
                     <DataGridTemplateColumn Header="">
@@ -71,16 +70,15 @@
         </Grid>
         <TextBox x:Name="id" HorizontalAlignment="Left" Height="31" Margin="115,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" Grid.Column="1"/>
         <Label Content="Id" HorizontalAlignment="Left" Margin="40,123,0,0" VerticalAlignment="Top" Height="23" Width="33" Grid.Column="1"/>
-        <Label Content="Nama" HorizontalAlignment="Left" Margin="40,186,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.19,0.654" Grid.Column="1" Height="24" Width="40"/>
-        <TextBox x:Name="nama" PreviewTextInput="nama_PreviewTextInput" HorizontalAlignment="Left" Height="33" Margin="115,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" Grid.Column="1"/>
+        <Label Content="Order Date" HorizontalAlignment="Left" Margin="40,186,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.19,0.654" Grid.Column="1" Height="24" Width="40"/>
         <Grid Grid.Column="1" HorizontalAlignment="Left" Height="90" Margin="530,413,0,0" VerticalAlignment="Top" Width="162">
-            <Button x:Name="bt_input" Click="Bt_input_Click" materialDesign:HintAssist.Hint="save" Content="{materialDesign:PackIcon done}" HorizontalAlignment="Left" Margin="96,10,0,0" VerticalAlignment="Top" Width="56">
+            <Button x:Name="bt_input" Click="Bt_input_Click" materialDesign:HintAssist.Hint="save" Content="{materialDesign:PackIcon done}" HorizontalAlignment="Left" Margin="96,0,0,48" VerticalAlignment="Bottom" Width="56">
                 <ToolTipService.ToolTip >
                     <ToolTip Content="Save"     
                     HorizontalOffset="10" VerticalOffset="20"/>
                 </ToolTipService.ToolTip>
             </Button>
-            <Button x:Name="bt_update" Content="{materialDesign:PackIcon Update}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="56" Click="Bt_update_Click">
+            <Button x:Name="bt_update" Content="{materialDesign:PackIcon Update}" HorizontalAlignment="Left" Margin="10,10,0,48" Width="56" Click="Bt_update_Click" Height="Auto">
                 <ToolTipService.ToolTip >
                     <ToolTip Content="Update"     
                     HorizontalOffset="10" VerticalOffset="20"/>
@@ -92,13 +90,14 @@
                     HorizontalOffset="10" VerticalOffset="20"/>
                 </ToolTipService.ToolTip>
             </Button>
-            <Button Content="{materialDesign:PackIcon ArrowLeft}" HorizontalAlignment="Left" Margin="10,48,0,0" Width="56" Click="Button_Click" Height="32" VerticalAlignment="Top">
+            <Button Content="{materialDesign:PackIcon ArrowLeft}" HorizontalAlignment="Left" Margin="10,48,0,10" Width="56" Click="Button_Click" Height="Auto">
                 <ToolTipService.ToolTip >
                     <ToolTip Content="Logout"     
                     HorizontalOffset="10" VerticalOffset="20"/>
                 </ToolTipService.ToolTip>
             </Button>
         </Grid>
+        <DatePicker x:Name="orderdate" Grid.Column="1" HorizontalAlignment="Left" Margin="115,185,0,0" VerticalAlignment="Top"/>
 
 
     </Grid>

@@ -224,5 +224,17 @@ namespace crud_wpf
             pndh.Show();
             this.Hide();
         }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            crud_transaction pndh = new crud_transaction();
+            pndh.Show();
+            this.Hide();
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

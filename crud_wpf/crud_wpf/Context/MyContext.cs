@@ -13,8 +13,9 @@ namespace crud_wpf.Context
         public MyContext() : base("crud_wpf") { }
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Item> Items { get; set; }
-
         public DbSet<Login> Logins { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<TransactionItem> TransactionItems { get; set; }
 
     }
 }

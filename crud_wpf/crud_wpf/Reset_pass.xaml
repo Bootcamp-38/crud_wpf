@@ -8,9 +8,10 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="Reset_pass" Height="500" Width="350">
     <Grid>
-        <TextBlock Margin="0,145,28,0" TextWrapping="Wrap" Text="Masukkan Email" FontSize="16" VerticalAlignment="Top" Height="27" HorizontalAlignment="Center"/>
-        <TextBox x:Name="tb_email" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Height="61" Margin="10,177,10,0" VerticalAlignment="Top" FontSize="18"/>
-        <Button Content="Send" Margin="126,297,141,0" VerticalAlignment="Top" Click="Button_Click"/>
-
+        <Grid HorizontalAlignment="Left" Height="314" Margin="50,69,0,0" VerticalAlignment="Top" Width="252">
+            <TextBox x:Name="tb_email" HorizontalAlignment="Left" Height="59" Margin="0,32,0,0" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="252"/>
+            <PasswordBox Margin="0,122,0,134" x:Name="tb_token" materialDesign:HintAssist.Hint="Token" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+            <Button Content="OK" Margin="86,236,91,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        </Grid>
     </Grid>
 </Window>

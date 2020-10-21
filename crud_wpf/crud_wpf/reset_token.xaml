@@ -1,0 +1,16 @@
+﻿<Window x:Class="crud_wpf.reset_token" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:crud_wpf"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="reset_token" Height="500" Width="350">
+    <Grid>
+        <TextBox x:Name="tb_email" HorizontalAlignment="Left" Height="59" Margin="10,85,0,0" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="322"/>
+        <PasswordBox Margin="0,206,0,225" x:Name="tb_pass" materialDesign:HintAssist.Hint="New Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="120,321,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click"/>
+
+    </Grid>
+</Window>
