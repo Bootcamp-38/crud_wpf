@@ -73,7 +73,7 @@ namespace crud_wpf
         {
             try
             {
-                if (nama.Text == string.Empty)
+                if (nama.Text == string.Empty || tb_price.Text == string.Empty || tb_stock.Text == string.Empty)
                 {
                     MessageBox.Show("Data kosong");
                     nama.Focus();
@@ -106,7 +106,7 @@ namespace crud_wpf
 
         private void Bt_update_Click(object sender, RoutedEventArgs e)
         {
-            if (nama.Text == string.Empty || id.Text == string.Empty)
+            if (nama.Text == string.Empty || tb_stock.Text == string.Empty || tb_price.Text == string.Empty || id.Text == string.Empty)
             {
                 MessageBox.Show("data kosong");
             }

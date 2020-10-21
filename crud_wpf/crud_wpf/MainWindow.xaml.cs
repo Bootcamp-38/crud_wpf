@@ -185,5 +185,12 @@ namespace crud_wpf
         {
 
         }
+
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            change_password pndh = new change_password();
+            pndh.Show();
+            this.Hide();
+        }
     }
 }

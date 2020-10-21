@@ -71,6 +71,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="change_password.xaml.cs">
+      <DependentUpon>change_password.xaml</DependentUpon>
+    </Compile>
     <Compile Include="crud_transaction.xaml.cs">
       <DependentUpon>crud_transaction.xaml</DependentUpon>
     </Compile>
@@ -89,6 +92,10 @@
     <Compile Include="reset_token.xaml.cs">
       <DependentUpon>reset_token.xaml</DependentUpon>
     </Compile>
+    <Page Include="change_password.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="crud_item.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
