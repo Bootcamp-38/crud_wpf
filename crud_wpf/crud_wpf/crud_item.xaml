@@ -41,6 +41,7 @@
                         <MenuItem Header="Item" Click="MenuItem_Click_1" />
                         <MenuItem Header="Transaction" Click="MenuItem_Click_2" />
                         <MenuItem Header="Transaction Item" Click="MenuItem_Click_3" />
+                        <MenuItem Header="change password" Click="MenuItem_Click_4" />
                         <!--<MenuItem Header="_Save" />
                         <Separator />
                         <MenuItem Header="_Exit" />-->

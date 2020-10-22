@@ -36,7 +36,11 @@ namespace crud_wpf
                     MessageBox.Show("masukkan password");
                     //tb_old.Focus();
                 }
-               
+                else if (tb_new.Password != tb_conf.Password)
+                {
+                    MessageBox.Show("Password tidak sesuai!");
+                }
+
                 else
                 {
 

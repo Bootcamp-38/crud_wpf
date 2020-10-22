@@ -41,6 +41,7 @@
                         <MenuItem Header="Item" Click="MenuItem_Click_1" />
                         <MenuItem Header="Transaction" Click="MenuItem_Click_2" />
                         <MenuItem Header="Transaction Item" Click="MenuItem_Click_3" />
+                        <MenuItem Header="change password" Click="MenuItem_Click_4" />
                         <!--<MenuItem Header="_Save" />
                         <Separator />
                         <MenuItem Header="_Exit" />-->
@@ -57,10 +58,10 @@
         <Label Content="Quantity" HorizontalAlignment="Left" Margin="20,141,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.19,0.654" Grid.Column="2" Height="24" Width="40"/>
         <TextBox x:Name="nama" HorizontalAlignment="Left" Height="24" Margin="134,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" Grid.Column="2"/>
         <Grid/>
-        <Label Content="Nama" HorizontalAlignment="Left" Margin="20,172,0,0" VerticalAlignment="Top" Width="96" Height="43" Grid.Column="2"/>
+        <Label Content="Nama" HorizontalAlignment="Left" Margin="20,176,0,0" VerticalAlignment="Top" Width="96" Height="43" Grid.Column="2"/>
         <ComboBox x:Name="cb_nama" ItemsSource="{Binding Item}" DisplayMemberPath="Name" SelectedValuePath="Id" HorizontalAlignment="Left" Margin="134,177,0,266" VerticalAlignment="Stretch" Width="183" SelectionChanged="Sp_SelectionChanged" Grid.Column="2"/>
-        <Label Content="Order Date" HorizontalAlignment="Left" Margin="20,205,0,0" VerticalAlignment="Top" Grid.Column="2" Height="24" Width="96" RenderTransformOrigin="0.5,1.542"/>
-        <ComboBox x:Name="cb_orderdate" ItemStringFormat="dd/MM/yyyy" ItemsSource="{Binding Transaction}" DisplayMemberPath="OrderDate" SelectedValuePath="Id" HorizontalAlignment="Left" Margin="134,205,0,0" VerticalAlignment="Top" Width="183" SelectionChanged="Sp_SelectionChanged1" Grid.Column="2" Height="44"/>
+        <Label Content="Order Date" HorizontalAlignment="Left" Margin="20,213,0,0" VerticalAlignment="Top" Grid.Column="2" Height="24" Width="96" RenderTransformOrigin="0.5,1.542"/>
+        <ComboBox x:Name="cb_orderdate" ItemStringFormat="dd/MM/yyyy" ItemsSource="{Binding Transaction}" IsEditable="True" DisplayMemberPath="OrderDate" SelectedValuePath="Id" HorizontalAlignment="Left" Margin="134,205,0,0" VerticalAlignment="Top" Width="183" SelectionChanged="Sp_SelectionChanged1" Grid.Column="2" Height="44"/>
         <StackPanel Grid.Column="2" HorizontalAlignment="Left" Height="379" Margin="358,75,0,0" VerticalAlignment="Top" Width="512">
             <DataGrid x:Name="Table_Transactionitem" SelectionChanged="Table_Item_SelectionChanged" AutoGenerateColumns="False" IsReadOnly="True" Height="246" VerticalAlignment="Top" HorizontalAlignment="Right" Width="512">
                 <DataGrid.Columns>

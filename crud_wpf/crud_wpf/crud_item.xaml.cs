@@ -234,7 +234,16 @@ namespace crud_wpf
 
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
+            crud_transactionitem pndh = new crud_transactionitem();
+            pndh.Show();
+            this.Hide();
+        }
 
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            change_password pndh = new change_password();
+            pndh.Show();
+            this.Hide();
         }
     }
 }

@@ -3,7 +3,9 @@ using crud_wpf.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -23,26 +25,48 @@ namespace crud_wpf
     /// </summary>
     public partial class mainlogin : Window
     {
+        
         MyContext myContext = new MyContext();
         public mainlogin()
         {
+            
             InitializeComponent();
+            if(Properties.Settings.Default.Username != string.Empty)
+            {
+                tb_email.Text = Properties.Settings.Default.Username;
+                tb_pass.Password = Properties.Settings.Default.Password;
+
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (cb_remember.IsChecked == true)
+            {
+                Properties.Settings.Default.Username = tb_email.Text;
+                Properties.Settings.Default.Password = tb_pass.Password;
+                Properties.Settings.Default.Save();
+            }
+            if (cb_remember.IsChecked == false)
+            {
+                Properties.Settings.Default.Username = "";
+                Properties.Settings.Default.Password = "";
+                Properties.Settings.Default.Save();
+            }
 
 
             try
             {
                 if (tb_email.Text.Length == 0)
                 {
-                    errormessage.Text = "Masukkan Email";
-                    tb_email.Focus();
+                    MessageBox.Show("Email kosong");
+                    //errormessage.Text = "Masukkan Email";
+                   tb_email.Focus();
                 }
                 else if (!Regex.IsMatch(tb_email.Text, @"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"))
                 {
-                    errormessage.Text = "Email tidak valid";
+                    MessageBox.Show("Email tidak valid");
+                    //errormessage.Text = "Email tidak valid";
                     tb_email.Select(0, tb_email.Text.Length);
                     tb_email.Focus();
                 }
@@ -60,9 +84,14 @@ namespace crud_wpf
                     {
                         if (passcek == tb_pass.Password)
                         {
+                            
                             crud_item mainPage = new crud_item();
                             mainPage.Show();
                             this.Close();
+                            if (cb_remember.IsChecked == true)
+                            {
+                                
+                            }
                         }
                         else
                         {
@@ -73,17 +102,19 @@ namespace crud_wpf
                     }
 
                 }
+
+                
             }
             catch (Exception)
             {
 
             }
-            //Login cek = (from n in myContext.Logins where n.Email = tb_email select n).Single();
-            //cek.Email = tb_email.Text;}
-            //crud_item pndh = new crud_item();
-            //pndh.Show();
-            //this.Hide();
-        }
+                //Login cek = (from n in myContext.Logins where n.Email = tb_email select n).Single();
+                //cek.Email = tb_email.Text;}
+                //crud_item pndh = new crud_item();
+                //pndh.Show();
+                //this.Hide();
+                }
 
         private void Button_ForgotPass_Click(object sender, RoutedEventArgs e)
         {
@@ -133,5 +164,6 @@ namespace crud_wpf
                 }
             }
         }
+        
     }
 }

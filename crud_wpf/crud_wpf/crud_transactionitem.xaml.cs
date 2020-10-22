@@ -40,7 +40,9 @@ namespace crud_wpf
 
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
-
+            crud_transactionitem pndh = new crud_transactionitem();
+            pndh.Show();
+            this.Hide();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -86,9 +88,21 @@ namespace crud_wpf
 
         private void Bt_update_Click(object sender, RoutedEventArgs e)
         {
-            if (nama.Text == string.Empty || cb_orderdate.SelectedItem == null || cb_nama.SelectedItem == null || id.Text == string.Empty)
+            if (nama.Text == string.Empty)
             {
                 MessageBox.Show("data kosong");
+            }
+            else if (id.Text == string.Empty)
+            {
+                MessageBox.Show("Date id Kosong");
+            }
+            else if (cb_orderdate.Text=="")
+            {
+                MessageBox.Show("Order Date Kosong");
+            }
+            else if (cb_nama.Text == "")
+            {
+                MessageBox.Show("data item kosong");
             }
             else
             {
@@ -181,17 +195,23 @@ namespace crud_wpf
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow pndh = new MainWindow();
+            pndh.Show();
+            this.Hide();
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-
+            crud_item pndh = new crud_item();
+            pndh.Show();
+            this.Hide();
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
-
+            crud_transaction pndh = new crud_transaction();
+            pndh.Show();
+            this.Hide();
         }
 
         private void Sp_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -217,6 +237,13 @@ namespace crud_wpf
             {
                 ex.Message.ToString();
             }
+        }
+
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            change_password pndh = new change_password();
+            pndh.Show();
+            this.Hide();
         }
     }
 }

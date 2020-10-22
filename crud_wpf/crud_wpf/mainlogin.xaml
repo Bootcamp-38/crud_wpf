@@ -29,9 +29,10 @@
                 <TextBox Margin="0,10" x:Name="tb_email" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
                 <PasswordBox Margin="0,10" x:Name="tb_pass" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
             </StackPanel>
+            <CheckBox Content="Remember Me" x:Name="cb_remember" FontFamily="Champagne &amp; Limousines" FontSize="9" HorizontalAlignment="Left" Margin="15,190,0,0" VerticalAlignment="Top"/>
         </Grid>
-        <Button Width="150" x:Name="bt_login" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,65" Content="LOGIN" Click="Button_Click"/>
-        <Button Content="Lupa Password ?" Background="{x:Null}" Foreground="Black" BorderBrush="{x:Null}" VerticalContentAlignment="Bottom" x:Name="bt_lupa_Pass" Click="Button_ForgotPass_Click" Margin="0,409,0,28"/>
+        <Button Width="150" x:Name="bt_login" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="96,0,96,60" Content="LOGIN" Click="Button_Click"/>
+        <Button Content="Lupa Password ?" Background="{x:Null}" Foreground="Black" BorderBrush="{x:Null}" VerticalContentAlignment="Bottom" x:Name="bt_lupa_Pass" Click="Button_ForgotPass_Click" Margin="0,416,0,21"/>
         <TextBlock Height="23" HorizontalAlignment="Left" x:Name ="errormessage" VerticalAlignment="Top" Width="246" Margin="114,235,-18,0"  OpacityMask="Crimson" Foreground="#FFE5572C"  />
         <Image Source="Assets/user.jpg" Width="100" Height="100" VerticalAlignment="Top" Margin="30"/>
     </Grid>
